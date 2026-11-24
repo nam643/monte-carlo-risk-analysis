@@ -25,4 +25,4 @@ target_compile_options(
 add_subdirectory(src/core)
 add_subdirectory(src/analytics)
 add_subdirectory(src/app)
-add_subdirectory(src/tests)
+add_subdirectory(tests)
