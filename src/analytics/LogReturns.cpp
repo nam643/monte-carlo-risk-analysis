@@ -9,7 +9,7 @@ namespace qrw{
         }
 
         for(double p : prices){
-            if(p<=0.0){
+            if(!std::isfinite(p) || p<=0.0){
                 return std::unexpected(AnalyticsError::NonPositivePrice);
             }
         }

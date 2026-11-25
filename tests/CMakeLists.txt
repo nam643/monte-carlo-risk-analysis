@@ -11,3 +11,7 @@ target_link_libraries(
         qrw_analytics
         qrw_warnings
 )
+
+include(Catch)
+
+catch_discover_tests(qrw_tests)

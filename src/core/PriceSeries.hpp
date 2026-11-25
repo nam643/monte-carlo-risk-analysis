@@ -12,11 +12,32 @@ namespace qrw{
         NonPositivePrice
     };
 
-    struct PriceSeries{
-        std::vector<std::chrono::sys_days> dates;
-        std::vector<double> closes;
+    class PriceSeries{
+    public:
+        static auto create(
+            std::vector<std::chrono::sys_days> dates,
+            std::vector<double> closes
+        )
+        -> std::expected<PriceSeries, PriceSeriesError>;
 
-        static auto create(std::vector<std::chrono::sys_days> dates, std::vector<double> closes) ->
-            std::expected<PriceSeries, PriceSeriesError>; // std::expected<T,E> -> True or Error
+        [[nodiscard]]
+        auto dates() const noexcept
+            -> std::span<const std::chrono::sys_days>;
+
+        [[nodiscard]]
+        auto closes() const noexcept
+            -> std::span<const double>;
+        
+        [[nodiscard]]
+        auto size() const noexcept
+            -> std::size_t;
+    private:
+        PriceSeries(
+            std::vector<std::chrono::sys_days> dates,
+            std::vector<double> closes
+        );
+
+        std::vector<std::chrono::sys_days> dates_;
+        std::vector<double> closes_;
     };
 }

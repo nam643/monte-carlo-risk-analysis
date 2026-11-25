@@ -14,6 +14,24 @@ target_include_directories(
 
 target_link_libraries(
     qrw_core
-    PUBLIC
+    PRIVATE
+        qrw_warnings
+)
+
+target_link_libraries(
+    qrw_analytics
+    PRIVATE
+        qrw_warnings
+)
+
+target_link_libraries(
+    qrw_app
+    PRIVATE
+        qrw_warnings
+)
+
+target_link_libraries(
+    qrw_tests
+    PRIVATE
         qrw_warnings
 )

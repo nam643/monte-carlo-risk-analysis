@@ -41,3 +41,35 @@ TEST_CASE("zero price returns error"){
 
     REQUIRE(result.error() == qrw::AnalyticsError::NonPositivePrice);
 }
+
+TEST_CASE("nan price returns error"){
+    const std::vector<double> prices{
+        100.0,
+        std::numeric_limits<double>::quiet_NaN()
+    };
+
+    const auto result = qrw::log_returns(prices);
+
+    REQUIRE_FALSE(result.has_value());
+
+    REQUIRE(
+        result.error() == qrw::AnalyticsError::NonPositivePrice
+    );
+}
+
+TEST_CASE("infinite price returns error")
+{
+    const std::vector<double> prices{
+        100.0,
+        std::numeric_limits<double>::infinity()
+    };
+
+    const auto result =
+        qrw::log_returns(prices);
+
+    REQUIRE_FALSE(result.has_value());
+
+    REQUIRE(
+        result.error() ==
+        qrw::AnalyticsError::NonPositivePrice);
+}
