@@ -7,11 +7,10 @@ add_executable(qrw_tests
 target_link_libraries(
     qrw_tests
     PRIVATE
-        Catch2::Catch2WithMain
         qrw_analytics
         qrw_warnings
+        Catch2::Catch2WithMain
 )
 
 include(Catch)
-
 catch_discover_tests(qrw_tests)

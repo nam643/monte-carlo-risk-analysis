@@ -11,7 +11,7 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS OFF)
 
 enable_testing()
-
+find_package(fmt CONFIG REQUIRED)
 add_library(qrw_warnings INTERFACE)
 
 target_compile_options(

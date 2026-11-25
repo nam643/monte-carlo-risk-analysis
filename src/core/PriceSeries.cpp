@@ -34,6 +34,12 @@ namespace qrw{
             return std::unexpected(PriceSeriesError::NonPositivePrice);
         }
 
+        auto duplicate = std::ranges::adjacent_find(dates);
+
+        if(duplicate != dates.end()){
+            return std::unexpected(PriceSeriesError::DuplicateDate);
+        }
+
         return PriceSeries{
             std::move(dates),
             std::move(closes)

@@ -9,7 +9,8 @@ namespace qrw{
         EmptyInput,
         SizeMismatch,
         UnsortedDate,
-        NonPositivePrice
+        NonPositivePrice,
+        DuplicateDate
     };
 
     class PriceSeries{

@@ -17,21 +17,3 @@ target_link_libraries(
     PRIVATE
         qrw_warnings
 )
-
-target_link_libraries(
-    qrw_analytics
-    PRIVATE
-        qrw_warnings
-)
-
-target_link_libraries(
-    qrw_app
-    PRIVATE
-        qrw_warnings
-)
-
-target_link_libraries(
-    qrw_tests
-    PRIVATE
-        qrw_warnings
-)
